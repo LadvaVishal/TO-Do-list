@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Check</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Weather Check</h1>
+        <div class="form-group mt-3">
+            <label for="cityInput">Enter a city:</label>
+            <input type="text" id="cityInput" class="form-control" placeholder="City Name">
+        </div>
+        <button class="btn btn-primary mt-3" id="checkWeather">Check Weather</button>
+        <div class="mt-4" id="weatherInfo">
+            <!-- Weather information will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Replace 'YOUR_API_KEY' with your actual API key and 'API_ENDPOINT' with the real API endpoint.
+        const apiKey = 'GET https://api.openweathermap.org/data/2.5/weather?q=CityName&appid=YOUR_API_KEY';
+        const apiEndpoint = 'API_ENDPOINT';
+
+        document.getElementById('checkWeather').addEventListener('click', () => {
+            const city = document.getElementById('cityInput').value;
+            fetch(`${apiEndpoint}?q=${city}&appid=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherInfo = document.getElementById('weatherInfo');
+                    if (data.main) {
+                        const temperature = data.main.temp;
+                        weatherInfo.innerHTML = `<p>Temperature in ${city}: ${temperature}°C</p>`;
+                    } else {
+                        weatherInfo.innerHTML = '<p>City not found. Please try again.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+</body>
+</html>

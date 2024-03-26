@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="C:\Users\ladav\Desktop\SP-Assignment2\SP-Assignment2\styles.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>To-Do List</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">To-Do List</h1>
+        <form id="task-form" action="/add" method="post" class="mt-4">
+            <div class="form-group">
+                <input id="task-input" type="text" name="task" class="form-control" placeholder="Add a new task" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+        <ul class="list-group mt-4" id="task-list">
+        </ul>
+    </div>
+    <script src="/script.js"></script>
+
+</body>
+</html>
